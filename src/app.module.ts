@@ -17,7 +17,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
       },
     ]),
     TransferModule,
-     ],
+  ],
   controllers: [],
   providers: [
     {

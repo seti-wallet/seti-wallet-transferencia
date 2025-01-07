@@ -8,6 +8,11 @@ import { SaldoConsumerService } from './transfer.saldoconsumerservice';
 @Module({
   imports: [HttpModule],
   controllers: [TransferController],
-  providers: [TransferService, TransferRepository, Logger, SaldoConsumerService],
+  providers: [
+    TransferService,
+    TransferRepository,
+    Logger,
+    SaldoConsumerService,
+  ],
 })
 export class TransferModule {}
