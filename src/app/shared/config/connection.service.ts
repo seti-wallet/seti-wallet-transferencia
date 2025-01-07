@@ -4,7 +4,6 @@ import { MovimientosEntity } from 'src/app/entities/movimiento.entity';
 import { SaldosDiariosEntity } from 'src/app/entities/saldo.entity';
 //import { SaldosDiariosEntity } from 'src/app/entities/saldo.entity';
 
-
 @Injectable()
 export class ConfigMySql implements TypeOrmOptionsFactory {
   createTypeOrmOptions(): TypeOrmModuleOptions {
@@ -15,12 +14,7 @@ export class ConfigMySql implements TypeOrmOptionsFactory {
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [
-
-        SaldosDiariosEntity,
-        MovimientosEntity
-
-      ],
+      entities: [SaldosDiariosEntity, MovimientosEntity],
       synchronize: false,
       logging: ['error', 'warn', 'info', 'log'],
     };

@@ -1,1 +1,6 @@
-export class TransferDto { id: string; account: string; value: number; originAccount: string }
+export class TransferDto {
+  id: string;
+  account: string;
+  value: number;
+  originAccount: string;
+}

@@ -1,4 +1,8 @@
-import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
 import { HttpService } from '@nestjs/axios';
 import * as Opossum from 'opossum';
@@ -37,7 +41,7 @@ export class SaldoConsumerService {
   async callSaldoService(originAccount: number): Promise<number> {
     try {
       console.log('Realizando llamada al servicio de saldo...');
-      console.log('numero cuenta...'+ originAccount);
+      console.log('numero cuenta...' + originAccount);
       const response = await firstValueFrom(
         this.httpService.get(`http://localhost:3000/saldo/${originAccount}`),
       );
@@ -45,7 +49,9 @@ export class SaldoConsumerService {
       console.log('Respuesta del servicio de saldo: ', response);
 
       if (!Array.isArray(response.data) || response.data.length === 0) {
-        throw new NotFoundException(`No se encontró el número de cuenta: ${originAccount}`);
+        throw new NotFoundException(
+          `No se encontró el número de cuenta: ${originAccount}`,
+        );
       }
 
       const saldoData = response.data[0];
@@ -64,7 +70,10 @@ export class SaldoConsumerService {
     try {
       return await this.circuitBreaker.fire(cuenta);
     } catch (error) {
-      console.error('Error durante la llamada protegida con Circuit Breaker', error);
+      console.error(
+        'Error durante la llamada protegida con Circuit Breaker',
+        error,
+      );
       throw new InternalServerErrorException(
         'El servicio de saldo no está disponible en este momento',
       );
