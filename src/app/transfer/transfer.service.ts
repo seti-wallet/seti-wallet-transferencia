@@ -205,7 +205,7 @@ export class TransferService {
       movimiento.origen = '1';
       await movimientosRepo.save(movimiento);
       // Actualizar el saldo después de la transferencia
-      saldoExistente.saldo = Number(saldoExistente.saldo) - Number(value);
+      saldoExistente.saldo = Number(saldoExistente.saldo) + Number(value);
       await repo.save(saldoExistente);
 
       // Guardar auditoría de éxito en base de datos
