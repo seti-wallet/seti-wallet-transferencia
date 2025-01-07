@@ -41,7 +41,6 @@ export class TransferController {
     const cuentaNumero = parseInt(transferDto.originAccount, 10);
     try {
       return await this.transferService.transferFromExt(
-        transferDto.id,
         transferDto.account,
         transferDto.value,
         cuentaNumero,
